@@ -1,0 +1,628 @@
+﻿@page "/"
+@using Telerik.Blazor
+@using System.ComponentModel.DataAnnotations
+<style>
+    .row1 {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px; /* Adjust as needed */
+    }
+
+    .col {
+        flex: 0 0 16.66667%; /* 100% / 6 */
+        max-width: 16.66667%; /* 100% / 6 */
+        padding: 0 15px; /* Adjust as needed */
+        box-sizing: border-box;
+    }
+
+    /* For demonstration purposes */
+    .col {
+        /* background-color: #f2f2f2;
+        border: 1px solid #ddd; */
+        border: none;
+        /* Add elevation (shadow) */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .rating-radio input {
+        display: block;
+    }
+
+    .rating-radio {
+        display: flex;
+        justify-content: space-between
+    }
+
+    .rating-wrapper {
+        padding: 20px;
+        border: 1px solid #DDD;
+    }
+    .teamMate:after {
+        content: ".";
+        display: block;
+        height: 0;
+        line-height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .teamMate h2 {
+        font-size: 1.2em;
+        font-weight: normal;
+        padding-top: 19px;
+        margin: 0;
+    }
+
+    .teamMate p {
+        margin: 0;
+        font-size: .8em;
+    }
+
+    .teamMate img {
+        display: inline-block;
+        vertical-align: top;
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+    }
+
+    .mate-info {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .panelbar-wrapper {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+        flex: 1;
+        display: flex;
+    }
+
+    .column {
+        flex: 1;
+        padding: 20px;
+       /*  border: 1px solid #ccc; */
+        border: none;
+        /* Add elevation (shadow) */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .column-1, .column-2, .column-3 {
+        flex: 1;
+    }
+
+    .column-4 {
+        flex: 2;
+    }
+
+    .column-5 {
+        flex: 3;
+    }
+
+    /* Optional: Adjust individual column styles */
+    .column-1 {
+       /*  background-color: lightblue; */
+    }
+
+    .column-2 {
+       /*  background-color: lightgreen; */
+    }
+
+    .column-3 {
+       /*  background-color: lightcoral; */
+    }
+
+    .column-4 {
+        /* background-color: lightyellow; */
+    }
+
+    .column-5 {
+       /*  background-color: lightpink; */
+    }
+
+</style>
+<div class="container" style="max-width: 1800px;background-color:#f2f2f2">
+    <div class="row1">
+        <div class="col">
+            <div class="d-flex flex-row">  <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">7</h3>
+                <h3 class="k-opacity-20 " style="margin-left:30px;font-size: 20px;margin-top: 10px;">
+                    +4
+                </h3>
+        </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Active connected devices</h6></div>
+        </div>
+        <div class="col">
+                <div class="d-flex flex-row">
+                    <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">106</h3>
+                <h3 class="k-opacity-20 " style="margin-left:10px;font-size: 20px;margin-top: 12px;">
+                        0%
+                    </h3>
+                </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-people"></span> <h6 style="margin-left:10px">External identities</h6></div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">11.6K</h3>
+                <h3  style="margin-left:10px;font-size: 20px;margin-top: 12px;color:red">
+                    -11%
+                </h3>
+            </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Number of events...</h6></div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">0%</h3>
+                <h3  style="margin-left:10px;font-size: 20px;margin-top: 12px;color:red">
+                    -100%
+                </h3>
+            </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Priviliged Activity</h6></div>
+
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">834</h3>
+                <h3 class="k-opacity-20 " style="margin-left:10px;font-size: 20px;margin-top: 12px;">
+                   0%
+                </h3>
+            </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Recently Shared.. </h6></div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-row">
+                <h3 class="k-h4 k-opacity-20 k-font-bold" style="margin-left:30px">0</h3>
+                <h3 class="k-opacity-20 " style="margin-left:10px;font-size: 20px;margin-top: 12px;">
+                    0%
+                </h3>
+            </div>
+            <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Failed Logins... </h6></div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="column column-1">
+            <div class="d-flex flex-row">
+                <h4 style="margin-left:30px">Active Policies</h4>
+                <h3 class="k-opacity-20 " style="margin-left:30px;font-size: 20px;margin-top: 10px;">
+                    43
+                </h3>
+            </div>
+            <div class="d-flex flex-row">  <h6 style="margin-left:10px">policies have been opened in past 90 days</h6></div>
+
+           <TelerikChart>
+    <ChartTitle Text=""></ChartTitle>
+    <ChartLegend Visible="true" Position="ChartLegendPosition.Top"></ChartLegend>
+
+    <ChartSeriesItems>
+        <ChartSeries Type="ChartSeriesType.Donut"
+                     Data="@Data1"
+                     Field="@nameof(ModelData.Value)"
+                     CategoryField="@nameof(ModelData.Category)">
+            <ChartSeriesTooltip Visible="true" Context="item">
+                <Template>
+                    @item.Percentage.ToString("P")
+                </Template>
+            </ChartSeriesTooltip>
+           @*  <ChartSeriesLabels Position="ChartSeriesLabelsPosition.OutsideEnd"
+                               Visible="true"
+                               Background="transparent"
+                               Template="#= dataItem.Category # - #= percentage*100 #%">
+            </ChartSeriesLabels> *@
+        </ChartSeries>
+    </ChartSeriesItems>
+</TelerikChart>
+            <div class="d-flex flex-row" style="padding-left:30%"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">9 new policies in past 90 days. </h6></div>
+
+        </div>
+        <div class="column column-2">
+                <div class="d-flex flex-row">
+                    <h4  style="margin-left:30px">Open Alert</h4>
+                    <h3 class="k-opacity-20 " style="margin-left:30px;font-size: 20px;margin-top: 10px;">
+                        43
+                    </h3>
+                </div>
+                <div class="d-flex flex-row"> <span class="k-icon k-i-globe"></span> <h6 style="margin-left:10px">Alerts have been closed in past 90 days</h6></div>
+          <TelerikChart>
+    <ChartTooltip Visible="true"></ChartTooltip>
+    <ChartTitle Text="Open Alerts 42"></ChartTitle>
+    <ChartTitle Text=""></ChartTitle>
+    <ChartLegend Visible="false"></ChartLegend>
+
+    <ChartSeriesItems>
+        <ChartSeries Type="ChartSeriesType.Column" Name="Total Visits" Data="@Series1Data">
+        </ChartSeries>
+        <ChartSeries Type="ChartSeriesType.Column" Name="Unique visitors" Data="@Series2Data">
+        </ChartSeries>
+    </ChartSeriesItems>
+
+    <ChartValueAxes>
+        <ChartValueAxis Max="140000"></ChartValueAxis>
+    </ChartValueAxes>
+
+    <ChartCategoryAxes>
+        <ChartCategoryAxis Categories="@Categories"></ChartCategoryAxis>
+    </ChartCategoryAxes>
+
+</TelerikChart>
+        </div>
+        <div class="column column-3">
+            <div class="d-flex flex-row">
+                <h4 style="margin-left:30px">Recent Alerts</h4>
+                <h3 class="k-opacity-20 " style="margin-left:30px;font-size: 20px;margin-top: 10px;">
+                    43
+                </h3>
+            </div>
+            <div class="d-flex flex-row">  <h6 style="margin-left:10px">Alerts have been opened in past 90 days</h6></div>
+
+            @if (SampleData != null)
+            {
+                <TelerikGrid TItem="UrbanAreaDto"
+                             Height=@Height
+                             FilterMode="@GridFilterMode.FilterRow"
+                             Sortable=true
+                             Pageable=true
+                             Data="@SampleData">
+                    <GridColumns>
+                        <GridColumn Field=@nameof(UrbanAreaDto.Id) />
+                        <GridColumn Field=@nameof(UrbanAreaDto.City) />
+                        <GridColumn Field=@nameof(UrbanAreaDto.Country) />
+                    </GridColumns>
+                </TelerikGrid>
+            }
+            else
+            {
+                <!-- Display loader -->
+                <div class="loader-container">
+                    <span class="loader-size-title">Fetching data</span>
+                    <TelerikLoader Class="loader-indicator" Type="@LoaderType.ConvergingSpinner" Size="@(ThemeConstants.Loader.Size.Large)"></TelerikLoader>
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="column column-4">
+            <div class="d-flex flex-row">
+                <h4 style="margin-left:30px">Top Alerted Actors </h4>
+            </div>
+            <div style="width: 100%; margin: 0 auto;">
+    <TelerikPanelBar Data="@Data" @bind-ExpandedItems="@ExpandedItems">
+        <PanelBarBindings>
+            <PanelBarBinding Level="0">
+                <ContentTemplate>
+                    <div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:red"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Andrew Fuller</h2>
+                                            <p>Team Lead</p>
+                                        </div>
+                                        <div style="margin-left:500px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:blue"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Nancy Leverling</h2>
+                                            <p>Sales Associate</p>
+                                        </div>
+                                        <div style="margin-left:485px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:yellow"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Robert King</h2>
+                                            <p>Business System Analyst</p>
+                                        </div>
+                                        <div style="margin-left:480px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:purple"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Andrew Fuller</h2>
+                                            <p>Team Lead</p>
+                                        </div>
+                                        <div style="margin-left:500px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                     <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:purple"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Andrew Fuller</h2>
+                                            <p>Team Lead</p>
+                                        </div>
+                                        <div style="margin-left:500px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:purple"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Andrew Fuller</h2>
+                                            <p>Team Lead</p>
+                                        </div>
+                                        <div style="margin-left:500px">
+                                            3/11
+                                        </div>
+                                    </div>
+                                    <div class="teamMate d-flex flex-row">
+                                        <div style="width:3px;background-color:deeppink"></div>
+                                        <div class="mate-info" style="margin-left:10px">
+                                            <h2>Andrew Fuller</h2>
+                                            <p>Team Lead</p>
+                                        </div>
+                                        <div style="margin-left:500px">
+                                            3/11
+                                        </div>
+                                    </div>
+                    </div>
+                </ContentTemplate>
+            </PanelBarBinding>
+        </PanelBarBindings>
+    </TelerikPanelBar>
+                <div style="color:cornflowerblue">Show all Alerts+</div>
+</div>
+
+        </div>
+        <div class="column column-5">
+
+            <div class="d-flex flex-row">
+                <h4 style="margin-left:30px">MITRE Alerts Tactics </h4>
+                <div style="color:cornflowerblue;margin-left:730px">Alerts+</div>
+            </div>
+            <TelerikChart>
+                <ChartTooltip Visible="true"></ChartTooltip>
+                <ChartTitle Text="Open Alerts 42"></ChartTitle>
+                <ChartTitle Text=""></ChartTitle>
+                <ChartLegend Visible="false"></ChartLegend>
+
+                <ChartSeriesItems>
+                    <ChartSeries Type="ChartSeriesType.Column" Name="Total Visits" Data="@Series1Data">
+                    </ChartSeries>
+                  @*   <ChartSeries Type="ChartSeriesType.Column" Name="Unique visitors" Data="@Series2Data">
+                    </ChartSeries> *@
+                </ChartSeriesItems>
+
+                <ChartValueAxes>
+                    <ChartValueAxis Max="140000"></ChartValueAxis>
+                </ChartValueAxes>
+
+                <ChartCategoryAxes>
+                    <ChartCategoryAxis Categories="@Categories"></ChartCategoryAxis>
+                </ChartCategoryAxes>
+
+            </TelerikChart>
+
+        </div>
+    </div>
+</div>
+@code {
+    string Height = "400px";
+    public class UrbanAreaDto
+    {
+        public int Id { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+    }
+
+    List<UrbanAreaDto> SampleData = new List<UrbanAreaDto>
+    {
+        new UrbanAreaDto { Id = 1, City = "New York", Country = "USA" },
+        new UrbanAreaDto { Id = 2, City = "London", Country = "UK" },
+        new UrbanAreaDto { Id = 3, City = "Tokyo", Country = "Japan" },
+        new UrbanAreaDto { Id = 4, City = "Paris", Country = "France" },
+        new UrbanAreaDto { Id = 5, City = "Sydney", Country = "Australia" },
+        new UrbanAreaDto { Id = 6, City = "Sydney", Country = "Australia" },
+        new UrbanAreaDto { Id = 7, City = "Sydney", Country = "Australia" },
+        new UrbanAreaDto { Id = 8, City = "Sydney", Country = "Australia" },
+        new UrbanAreaDto { Id = 9, City = "Sydney", Country = "Australia" }
+    };
+    public int RatingValue { get; set; } = 10;
+    public int Value { get; set; }
+
+    public bool ShowWizard { get; set; } = true;
+
+    public TelerikForm RegisterForm { get; set; }
+    public User UserModel { get; set; } = new User();
+
+    public TelerikForm ShippingForm { get; set; }
+    public ShippingDetails ShippingModel { get; set; } = new ShippingDetails();
+
+    public IEnumerable<int> RatingValues = Enumerable.Range(1, 10);
+
+    private void OnWizardFinish()
+    {
+        ShowWizard = false;
+    }
+
+    public void OnRegistrationStepChange(WizardStepChangeEventArgs args)
+    {
+        var isFormValid = RegisterForm.IsValid();
+        if (!isFormValid)
+        {
+            args.IsCancelled = true;
+        }
+    }
+
+    public void OnShippingStepChange(WizardStepChangeEventArgs args)
+    {
+        var isPrevious = Value < args.TargetIndex;
+        if (Value < args.TargetIndex)
+        {
+            var isFormValid = ShippingForm.IsValid();
+            if (!isFormValid)
+            {
+                args.IsCancelled = true;
+            }
+        }
+    }
+
+    public class User
+    {
+        [Required]
+        public string FirstName { get; set; } = "John";
+
+        [Required]
+        public string LastName { get; set; } = "Smith";
+
+        [Required]
+        public string Email { get; set; } = "email@domain.com";
+
+        [MinLength(3, ErrorMessage = "The password should be at least 3 characters.")]
+        [Required]
+        public string Password { get; set; }
+
+        public DateTime? BirthDate { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You must agree with the terms.")]
+        [Display(Name = "Accept Terms and Conditions")]
+        public bool AcceptTerms { get; set; } = true;
+    }
+
+    public class ShippingDetails
+    {
+        [Required]
+        public string Country { get; set; } = "Italy";
+
+        [Required]
+        public string City { get; set; } = "Torino";
+
+        [Required]
+        public string AddressLine { get; set; } = "Via Garibaldi 374";
+
+        public string AddressLine2 { get; set; }
+    }
+
+    public class TreeItem
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public bool Disabled { get; set; }
+        public IEnumerable<TreeItem> Items { get; set; }
+    }
+
+    public IEnumerable<TreeItem> Data { get; set; }
+    public IEnumerable<object> ExpandedItems { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LoadFlatData();
+    }
+
+    private void LoadFlatData()
+    {
+        // TODO: Move to hierarchical data
+        List<TreeItem> items = new List<TreeItem>();
+        items.Add(new TreeItem() { Id = 0, Text = "My Teammates" });
+        // items.Add(new TreeItem()
+        //     {
+        //         Id = 1,
+        //         Text = "Projects",
+        //         Items = new List<TreeItem>()
+        //     {
+        //         new TreeItem() { Id = 2, Text = "New Business Plan" },
+        //         new TreeItem()
+        //         {
+        //             Id = 3,
+        //             Text = "Sales Forecasts",  Items = new List<TreeItem>()
+        //             {
+        //                 new TreeItem() { Id = 4, Text = "Q1 Forecast" },
+        //                 new TreeItem() { Id = 5, Text = "Q2 Forecast" },
+        //                 new TreeItem() { Id = 6, Text = "Q3 Forecast" },
+        //                 new TreeItem() { Id = 7, Text = "Q4 Forecast" }
+        //             }
+        //         }
+        //     }
+        //     });
+        // items.Add(new TreeItem()
+        //     {
+        //         Id = 8,
+        //         Text = "Programs",
+        //         Items = new List<TreeItem>()
+        //     {
+        //         new TreeItem() { Id = 9, Text = "Monday"},
+        //         new TreeItem() { Id = 10, Text = "Tuesday" },
+        //         new TreeItem() { Id = 11, Text = "Wednesday" },
+        //         new TreeItem() { Id = 12, Text = "Thursday" },
+        //         new TreeItem() { Id = 13, Text = "Friday" }
+        //     }
+        //     });
+        // items.Add(new TreeItem() { Id = 14, Text = "Communication", Disabled = true });
+
+        Data = items;
+
+        ExpandedItems = new List<object> { items.First() };
+    }
+    private List<int[]> SleepData = new List<int[]>() {
+        new int[] { 14, 17 },
+        new int[] { 12, 16 },
+        new int[] { 11, 14 },
+        new int[] { 10, 13 },
+        new int[] { 9, 12 },
+        new int[] { 8, 10 },
+        new int[] { 7, 9 },
+        new int[] { 7, 8 }
+    };
+
+    private string[] Categories1 = new string[] { "0–3 m", "4-12 m", "1-2 y", "3-5 y", "6-12 y", "13-18 y", "18-60 y", "60+ y" };
+    public List<object> Series1Data = new List<object>() { 56000, 63000, 74000, 91000, 117000, 138000 };
+    public List<object> Series2Data = new List<object>() { 52000, 34000, 23000, 48000, 67000, 83000 };
+    public string[] Categories = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun" };
+
+    public class ModelData
+    {
+        public string Category { get; set; }
+        public int Value { get; set; }
+    }
+
+    public List<ModelData> Data1 = new List<ModelData>()
+    {
+        new ModelData()
+        {
+            Category = "Active Policies",
+            Value = 85
+        },
+        new ModelData()
+        {
+            Category = "Non-Active Policies",
+            Value = 15
+        }
+        // new ModelData()
+        // {
+        //     Category = "Basketball",
+        //     Value = 25
+        // },
+        // new ModelData()
+        // {
+        //     Category = "Volleyball",
+        //     Value = 20
+        // },
+        // new ModelData()
+        // {
+        //     Category = "Rugby",
+        //     Value = 10
+        // },
+        // new ModelData()
+        // {
+        //     Category = "Tennis",
+        //     Value = 10
+        // }
+    };
+}
+
+
